@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: version-backend-deployment
+  labels:
+    app: version-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: version-backend
+  template:
+    metadata:
+      labels:
+        app: version-backend
+    spec:
+      containers:
+        - name: version-backend
+          image: coderpews/version-app:1.0
+          ports:
+            - containerPort: 5000
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: version-backend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: version-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000

@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: version-backend-deployment
+  labels:
+    app: version-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: version-backend
+  template:
+    metadata:
+      labels:
+        app: version-backend
+    spec:
+      containers:
+        - name: version-backend
+          image: rubblesnask/version-app:2.0
+          ports:
+            - containerPort: 5000
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: version-backend-service
+spec:
+  type: ClusterIP
+  selector:
+    app: version-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: version-frontend-deployment
+  labels:
+    app: version-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: version-frontend
+  template:
+    metadata:
+      labels:
+        app: version-frontend
+    spec:
+      containers:
+        - name: version-frontend
+          image: coderpews/version-app-front:2.1
+          ports:
+            - containerPort: 80
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: version-frontend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: version-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+

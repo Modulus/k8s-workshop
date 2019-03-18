@@ -33,7 +33,26 @@
         </address>
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave2.html">del1-oppgave2</a> <a href="/tag/del1.html">del1</a> </p>
-</footer><!-- /.post-info -->      <p>Her er oppgave 2</p>
+</footer><!-- /.post-info -->      <h1>Oppgave 2</h1>
+<p>Her er oppgave 2. I denne delen skal de opprette eige namespace på det delte kubernetes clusteret.</p>
+<h2>Oppave 2a - Opprette namespace</h2>
+<div class="highlight"><pre><span></span>kubectl create namespace curious-panda
+</pre></div>
+
+
+<p>Denne kommandoen vil opprette et namespace som <strong>du</strong> skal deploye til. Her kan du bruke eit navnet ditt e.l.</p>
+<p>Neste steg er å bytte til ditt nyoppretta namespace</p>
+<div class="highlight"><pre><span></span>kubectl config use-context $(kubectl config current-context) --namespace=curious-panda
+</pre></div>
+
+
+<p><strong>NB!!! Husk å bytte ut "curious-panda" med navnet på namespaces du laga i første delen av denne oppgava!</strong></p>
+<h2>Oppgave 2b - Deployment</h2>
+<div class="highlight"><pre><span></span>cd k8s
+kubectl apply -f deployment.yml
+</pre></div>
+
+
 <p>Videre til <a href="/Del1-Oppgave3.html">Oppgave 3</a></p>
     </div><!-- /.entry-content -->
 
