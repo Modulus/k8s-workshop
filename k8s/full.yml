@@ -5,7 +5,7 @@ metadata:
   labels:
     app: version-backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: version-backend
@@ -43,7 +43,7 @@ metadata:
   labels:
     app: version-frontend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: version-frontend
