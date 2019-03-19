@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+        <meta charset="utf-8" />
+        <title>Oppgave 2</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">k8s-workshop </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/Del1-Oppgave1.html">Oppgave 1</a></li>
+                    <li class="active"><a href="/pages/Del2-Oppgave2.html">Oppgave 2</a></li>
+                    <li><a href="/pages/Del1-Oppgave3.html">Del 1 Oppgave 3</a></li>
+                    <li><a href="/category/oppgave-liste.html">Oppgave liste</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Oppgave 2</h1>
+    
+    <h1>Oppgave 2</h1>
+<p>Her er oppgave 2. I denne delen skal de opprette eige namespace på det delte kubernetes clusteret.</p>
+<h2>Oppave 2a - Opprette namespace</h2>
+<div class="highlight"><pre><span></span>kubectl create namespace curious-panda
+</pre></div>
+
+
+<p>Denne kommandoen vil opprette et namespace som <strong>du</strong> skal deploye til. Her kan du bruke eit navnet ditt e.l.</p>
+<p><img alt="create namespace" src="/images/part1/task2/namespace_created.png"></p>
+<p>Neste steg er å bytte til ditt nyoppretta namespace</p>
+<div class="highlight"><pre><span></span>kubectl config use-context $(kubectl config current-context) --namespace=curious-panda
+</pre></div>
+
+
+<p><strong>NB!!! Husk å bytte ut "curious-panda" med navnet på namespaces du laga i første delen av denne oppgava!</strong></p>
+<h3>Sjekke aktivt namespace</h3>
+<div class="highlight"><pre><span></span>kubectl config get-contexts
+</pre></div>
+
+
+<p>Resultatet av dei forrige kommandoane vil sjå nokonlunde slik ut</p>
+<p><img alt="change namespace" src="/images/part1/task2/change_namespace.png"></p>
+<h2>Oppgave 2b - Git clone repo</h2>
+<p>Før vi kan deploye noko, må de klone eit git repository. Repositoriet ligg her [https://github.com/Modulus/k8s-workshop.git]. Velg dei ei fornuftig rot-mappe ala</p>
+<p>/Users/Dittbrukernavn/GitProjects e.l</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/Modulus/k8s-workshop.git
+</pre></div>
+
+
+<p>Innholdet i k8s-workshop folderen skal sjå slik ut:
+<img alt="Files" src="/images/part1/task2/git_repo_output.png"></p>
+<p>Inni denne mappa finnes det enda ei mappe med navnet "k8s" cd til denne mappa. Denne skal ha to filer, slik som under:
+<img alt="Manifests" src="/images/part1/task2/manifests.png"></p>
+<p>Bytt til k8s mappa og gjer deg klar til å deploye ein applikasjon. </p>
+<h2>Oppgave 2c Deploye backend</h2>
+<div class="highlight"><pre><span></span>cd k8s
+kubectl apply -f backend.yml
+</pre></div>
+
+
+<h2>Oppgave 2d Liste ut objekt</h2>
+<p>TODO: FYll inn meir kjøt her veit eg</p>
+<div class="highlight"><pre><span></span>kubectl get deployments
+</pre></div>
+
+
+<p><img alt="deployments" src="/images/part1/task2/deployments.png"></p>
+<div class="highlight"><pre><span></span>kubectl get pods
+</pre></div>
+
+
+<p><img alt="Running pods" src="/images/part1/task2/running_pods.png"></p>
+<div class="highlight"><pre><span></span>kubectl get services
+</pre></div>
+
+
+<p><img alt="Serivce" src="/images/part1/task2/service.png"></p>
+<p>Kopier ut "EXTERNAL-IP" verdien. (IP Adressa / DNS Navn). Denne skal brukast på den neste oppgava.  </p>
+<h2>Oppgave 2f</h2>
+<p><strong>NB! Husk å bytte ut 192.168.1.241 med verdien fra "EXTERNAL-IP"</strong></p>
+<p>curl 192.168.1.241</p>
+<p><img alt="curl" src="/images/part1/task2/curl1.png"></p>
+<h3>Oppgave 2f - Fjerne deployment</h3>
+<div class="highlight"><pre><span></span>kubectl delete -f backend.yml
+</pre></div>
+
+
+<p>Du er no ferdig med oppgave 2, Gå vidare til <a href="{filename}/part1/task3.md">Oppgave 3</a></p>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

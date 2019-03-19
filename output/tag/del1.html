@@ -10,14 +10,106 @@
         <header id="banner" class="body">
                 <h1><a href="/">k8s-workshop </a></h1>
                 <nav><ul>
-                    <li><a href="/category/del-1.html">Del 1</a></li>
-                    <li><a href="/category/oppgave-liste.html">Oppgave liste</a></li>
+                    <li><a href="/pages/Del1Oppgaver.html">Del 1 Oppgaver</a></li>
+                    <li><a href="/pages/Del2Oppgaver.html">Del 2 Oppgaver</a></li>
+                    <li><a href="/category/oppgaver.html">Oppgaver</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Del1-Oppgave1.html">Del 1 Oppgave 1</a></h1>
+                    <h1 class="entry-title"><a href="/Del2-Oppgave2.html">Oppgave 2</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-03-18T07:56:00+01:00">
+                Published: ma. 18 mars 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
+        </address>
+<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
+<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave2.html">del1-oppgave2</a> <a href="/tag/del1.html">del1</a> </p>
+</footer><!-- /.post-info --><h1>Oppgave 2</h1>
+<p>Her er oppgave 2. I denne delen skal de opprette eige namespace på det delte kubernetes clusteret.</p>
+<h2>Oppave 2a - Opprette namespace</h2>
+<div class="highlight"><pre><span></span>kubectl create namespace curious-panda
+</pre></div>
+
+
+<p>Denne kommandoen vil opprette et namespace som <strong>du</strong> skal deploye til. Her kan du bruke eit navnet ditt e.l.</p>
+<p><img alt="create namespace" src="/images/part1/task2/namespace_created.png"></p>
+<p>Neste steg er å bytte til ditt nyoppretta namespace</p>
+<div class="highlight"><pre><span></span>kubectl config use-context $(kubectl config current-context) --namespace=curious-panda
+</pre></div>
+
+
+<p><strong>NB!!! Husk å bytte ut "curious-panda" med navnet på namespaces du laga i første delen av denne oppgava!</strong></p>
+<h3>Sjekke aktivt namespace</h3>
+<div class="highlight"><pre><span></span>kubectl config get-contexts
+</pre></div>
+
+
+<p>Resultatet av dei forrige kommandoane vil sjå nokonlunde slik ut</p>
+<p><img alt="change namespace" src="/images/part1/task2/change_namespace.png"></p>
+<h2>Oppgave 2b - Git clone repo</h2>
+<p>Før vi kan deploye noko, må de klone eit git repository. Repositoriet ligg her [https://github.com/Modulus/k8s-workshop.git]. Velg dei ei fornuftig rot-mappe ala</p>
+<p>/Users/Dittbrukernavn/GitProjects e.l</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/Modulus/k8s-workshop.git
+</pre></div>
+
+
+<p>Innholdet i k8s-workshop folderen skal sjå slik ut:
+<img alt="Files" src="/images/part1/task2/git_repo_output.png"></p>
+<p>Inni denne mappa finnes det enda ei mappe med navnet "k8s" cd til denne mappa. Denne skal ha to filer, slik som under:
+<img alt="Manifests" src="/images/part1/task2/manifests.png"></p>
+<p>Bytt til k8s mappa og gjer deg klar til å deploye ein applikasjon. </p>
+<h2>Oppgave 2c Deploye backend</h2>
+<div class="highlight"><pre><span></span>cd k8s
+kubectl apply -f backend.yml
+</pre></div>
+
+
+<h2>Oppgave 2d Liste ut objekt</h2>
+<p>TODO: FYll inn meir kjøt her veit eg</p>
+<div class="highlight"><pre><span></span>kubectl get deployments
+</pre></div>
+
+
+<p><img alt="deployments" src="/images/part1/task2/deployments.png"></p>
+<div class="highlight"><pre><span></span>kubectl get pods
+</pre></div>
+
+
+<p><img alt="Running pods" src="/images/part1/task2/running_pods.png"></p>
+<div class="highlight"><pre><span></span>kubectl get services
+</pre></div>
+
+
+<p><img alt="Serivce" src="/images/part1/task2/service.png"></p>
+<p>Kopier ut "EXTERNAL-IP" verdien. (IP Adressa / DNS Navn). Denne skal brukast på den neste oppgava.  </p>
+<h2>Oppgave 2f</h2>
+<p><strong>NB! Husk å bytte ut 192.168.1.241 med verdien fra "EXTERNAL-IP"</strong></p>
+<p>curl 192.168.1.241</p>
+<p><img alt="curl" src="/images/part1/task2/curl1.png"></p>
+<h3>Oppgave 2f - Fjerne deployment</h3>
+<div class="highlight"><pre><span></span>kubectl delete -f backend.yml
+</pre></div>
+
+
+<p>Du er no ferdig med oppgave 2, Gå vidare til <a href="/Del1-Oppgave3.html">Oppgave 3</a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/Del1-Oppgave1.html" rel="bookmark"
+                           title="Permalink to Oppgave 1">Oppgave 1</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2019-03-15T13:29:00+01:00">
                 Published: fr. 15 mars 2019
@@ -26,46 +118,12 @@
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
         </address>
-<p>In <a href="/category/del-1.html">Del 1</a>.</p>
+<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave1.html">del1-oppgave1</a> <a href="/tag/del1.html">del1</a> </p>
-</footer><!-- /.post-info --><p>Her er oppgave 1. Det som skal gjøres her er å installere kubectl verktøyet. Dette verktøyet blir brukt til å knytte seg opp mot ulike kubernetes cluster. Oppgavene skal løysast på eit delt kluster som kjører aws.
-Oppkobling mot klusteret er da ei del av oppgava.</p>
-<h2>Oppgave 1a -  Installasjon av kubectl</h2>
-<p>Installasjons instrukser for kubectl finnes her: <a href="{https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl}">kubectl install instructions</a></p>
-<h3>Sette opp kubeconfig for workshop cluster</h3>
-<p>Personen som står der framme og kaklar, vil straks dele ei konfigurasjonsfil med alle. Denne fila må kopierast inn i ~/.kube/ mappen. Kall filen config den fulle stien blir da <strong>~/.kube/config</strong></p>
-<h2>Oppgave 1b Sjekke cluster</h2>
-<div class="highlight"><pre><span></span>kubectl cluster-info
-</pre></div>
-
-
-<p>Outputen skal da se ut som noe slik:
-<img alt="cluster-info" src="/images/part1/task1/cluster-info.png"></p>
-<h2>Oppgave 1c Liste ut nodar</h2>
-<div class="highlight"><pre><span></span>kubectl get nodes
-</pre></div>
-
-
-<p>Output på denne kommandoen ser noenlunde slik ut:</p>
-<p><img alt="nodes" src="/images/part1/task1/nodes.png"></p>
-<h2>Oppgave 1d - Liste ut namespaces</h2>
-<div class="highlight"><pre><span></span>kubectl get namespaces
-</pre></div>
-
-
-<p><img alt="namespaces" src="/images/part1/task1/namespaces.png"></p>
-<h2>Oppgave 1e - Liste ut pods i kube-system</h2>
-<div class="highlight"><pre><span></span>kubectl get pods -n kube-system
-</pre></div>
-
-
-<p><img alt="namespaces" src="/images/part1/task1/pods.png"></p>
-<p>Hopp videre til <a href="/Del2-Oppgave2.html">Oppgave 2</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Oppgave liste og introduksjon</p>
+                <a class="readmore" href="/Del1-Oppgave1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -82,32 +140,10 @@ Oppkobling mot klusteret er da ei del av oppgava.</p>
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
         </address>
-<p>In <a href="/category/del-1.html">Del 1</a>.</p>
+<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave3.html">del1-oppgave3</a> <a href="/tag/del1.html">del1</a> </p>
 </footer><!-- /.post-info -->                <p>Oppgave liste og introduksjon</p>
                 <a class="readmore" href="/Del1-Oppgave3.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Del2-Oppgave2.html" rel="bookmark"
-                           title="Permalink to Del1-Oppgave 2">Del1-Oppgave 2</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-03-15T13:29:00+01:00">
-                Published: fr. 15 mars 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
-        </address>
-<p>In <a href="/category/del-1.html">Del 1</a>.</p>
-<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave2.html">del1-oppgave2</a> <a href="/tag/del1.html">del1</a> </p>
-</footer><!-- /.post-info -->                <p>Oppvage 2</p>
-                <a class="readmore" href="/Del2-Oppgave2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

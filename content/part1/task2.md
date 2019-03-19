@@ -1,10 +1,11 @@
-Title: Del1-Oppgave 2
-Date: 2019-03-15 13:29
+Title: Oppgave 2
+Date: 2019-03-18 07:56
 Tags: introduction,main,k8s,kubernetes,del1-oppgave2,del1
 Slug: Del2-Oppgave2
 Authors: John Sigvald Skauge
 Summary: Oppvage 2
-Category: Del 1
+Category: Oppgaver
+
 
 # Oppgave 2
 
@@ -40,7 +41,7 @@ Resultatet av dei forrige kommandoane vil sjå nokonlunde slik ut
 
 
 
-## Oppgave 2b - Deployment
+## Oppgave 2b - Git clone repo
 
 Før vi kan deploye noko, må de klone eit git repository. Repositoriet ligg her [https://github.com/Modulus/k8s-workshop.git]. Velg dei ei fornuftig rot-mappe ala
 
@@ -57,31 +58,54 @@ Inni denne mappa finnes det enda ei mappe med navnet "k8s" cd til denne mappa. D
 ![Manifests]({static}/images/part1/task2/manifests.png)
 
 
-Innholdet i fila de skal deploye ser slik ut:
-
-![Yml]({static}/images/part1/task2/yml.png)
+Bytt til k8s mappa og gjer deg klar til å deploye ein applikasjon. 
 
 
+
+## Oppgave 2c Deploye backend
 ```
 cd k8s
 kubectl apply -f backend.yml
 ```
 
-## Oppgave 2c Liste ut objekt
+## Oppgave 2d Liste ut objekt
 
 TODO: FYll inn meir kjøt her veit eg
 
 ```
 kubectl get deployments
+```
+![deployments]({static}/images/part1/task2/deployments.png)
+```
 kubectl get pods
+```
+![Running pods]({static}/images/part1/task2/running_pods.png)
+
+```
 kubectl get services
 ```
+![Serivce]({static}/images/part1/task2/service.png)
 
-### Oppgave 2d - Fjerne deployment
+Kopier ut "EXTERNAL-IP" verdien. (IP Adressa / DNS Navn). Denne skal brukast på den neste oppgava.  
+
+
+## Oppgave 2f 
+
+**NB! Husk å bytte ut 192.168.1.241 med verdien fra "EXTERNAL-IP"**
+
+curl 192.168.1.241
+
+![curl]({static}/images/part1/task2/curl1.png)
+
+
+### Oppgave 2f - Fjerne deployment
 
 ```
 kubectl delete -f backend.yml
 ```
+
+
+
 
 
 Du er no ferdig med oppgave 2, Gå vidare til [Oppgave 3]({filename}/part1/task3.md)

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: version-backend
-          image: coderpews/version-app:1.0
+          image: coderpews/version-app:3.0
           ports:
             - containerPort: 5000
 ---

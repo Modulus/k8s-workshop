@@ -1,10 +1,10 @@
-Title: Del 1 Oppgave 1
+Title: Oppgave 1
 Date: 2019-03-15 13:29
 Tags: introduction,main,k8s,kubernetes,del1-oppgave1,del1
 Slug: Del1-Oppgave1
 Authors: John Sigvald Skauge
 Summary: Oppgave liste og introduksjon
-Category: Del 1
+Category: Oppgaver
 
 
 Her er oppgave 1. Det som skal gjøres her er å installere kubectl verktøyet. Dette verktøyet blir brukt til å knytte seg opp mot ulike kubernetes cluster. Oppgavene skal løysast på eit delt kluster som kjører aws.

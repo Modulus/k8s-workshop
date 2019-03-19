@@ -10,8 +10,9 @@
         <header id="banner" class="body">
                 <h1><a href="/">k8s-workshop </a></h1>
                 <nav><ul>
-                    <li class="active"><a href="/category/del-1.html">Del 1</a></li>
-                    <li><a href="/category/oppgave-liste.html">Oppgave liste</a></li>
+                    <li><a href="/pages/Del1Oppgaver.html">Del 1 Oppgaver</a></li>
+                    <li><a href="/pages/Del2Oppgaver.html">Del 2 Oppgaver</a></li>
+                    <li class="active"><a href="/category/oppgaver.html">Oppgaver</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
@@ -31,36 +32,78 @@
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
         </address>
-<p>In <a href="/category/del-1.html">Del 1</a>.</p>
+<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave3.html">del1-oppgave3</a> <a href="/tag/del1.html">del1</a> </p>
 </footer><!-- /.post-info -->      <p>Her er oppgave 3. Her skal vi sjå meir på port-forwarding og skalering av kjørandes applikasjonar.</p>
-<h3>Oppgave 3a</h3>
+<h2>Oppgave 3a</h2>
 <p>No skal du deploye ein oppgradert versjon av applikasjonen fra forrige oppgave. Denne versjonen returnerer json-data og har ein frontend som pollar data ca 1 gang per sekund.</p>
 <div class="highlight"><pre><span></span>kubectl apply -f full.yml
 </pre></div>
 
 
-<h3>Oppgave 3b</h3>
+<h2>Oppgave 3b</h2>
 <p>Manifestet fra forrige oppgave deployar kun 1 replica av både frontend og backend tjenesten. Desse skal vi no skalere opp til å kjøre 3 instansar av klar tjeneste.</p>
+<p>Først lister vi ut deployment info for det vi nettopp har deploya.</p>
 <div class="highlight"><pre><span></span>kubectl get deployments
 </pre></div>
 
 
+<p><img alt="deployments before scaling" src="/images/part1/task3/deployment.png"></p>
+<p>Poddar som er deploya finn man slik</p>
+<div class="highlight"><pre><span></span>kubectl get pods 
+</pre></div>
+
+
+<p><img alt="deployments before scaling" src="/images/part1/task3/pods1.png"></p>
+<p>Her skalerer vi backend deploymenten opp til 3 replicas. Det vil sei at vi får 3 poddar når oppskaleringa er ferdig.</p>
 <div class="highlight"><pre><span></span>kubectl scale deployment/version-backend-deployment --replicas=3
 </pre></div>
 
 
+<p>For å sjå på endring kan vi liste ut deployments slik</p>
 <div class="highlight"><pre><span></span>kubectl get deployments
 </pre></div>
 
 
+<p><img alt="deployments before scaling" src="/images/part1/task3/deployment2.png"></p>
+<p>Og poddar slik</p>
+<div class="highlight"><pre><span></span>kubectl get pods
+</pre></div>
+
+
+<p><img alt="deployments before scaling" src="/images/part1/task3/pods2.png"></p>
+<p>Ein kan også bruka lablar til å lista ut ein spesifikk type pod</p>
 <div class="highlight"><pre><span></span>kubectl get pods -l app=version-backend
 </pre></div>
 
 
-<h3>Oppgave 3c - Åpne frontend tjenesten i nettlesaren din</h3>
-<h3>Oppgave 3d - Port-forward for å få kontakt med backend</h3>
+<p><img alt="deployments before scaling" src="/images/part1/task3/pods3.png"></p>
+<h2>Oppgave 3c - Åpne frontend tjenesten i nettlesaren din</h2>
+<p>For å få dette til må du liste ut tjenester slik</p>
+<div class="highlight"><pre><span></span>kubectl get services
+</pre></div>
+
+
+<p><img alt="services" src="/images/part1/task3/services.png"></p>
+<p>Kopier ut den lange dns strengen under "EXTERNAL-IP" og klask den inn i nettleseren din og trykk enter</p>
+<p><img alt="ellol" src="/images/part1/task3/version_fail.png">
+<strong>Men ka farsken, detta funka jo ikkje. Er da ølagt!!!!?</strong> Eller er da? </p>
+<h2>Oppgave 3d - Port-forward for å få kontakt med backend</h2>
 <p>For å få frontend til å prate med backend i dette tilfellet, må vi sette opp port-forwarding mot backend tjenesten mot port 5000 lokalt. Alternativet er å bruke ein sentral tjeneste eller ein ingress med ein sentral dns. Men desse tinga er utenfor denne workshoppen.</p>
+<p>Liste ut navnet på backend tjenesten</p>
+<div class="highlight"><pre><span></span>kubectl get services -l app=backend
+</pre></div>
+
+
+<p><img alt="backend service" src="/images/part1/task3/backend_service.png"></p>
+<p>Så kan vi kjøre ein port-forward kommando. Hugs at frontend no forventar trafikk på localhost port 5000 og ikke port 80</p>
+<div class="highlight"><pre><span></span>kubectl port-forward service/version-backend-service 5000:80
+</pre></div>
+
+
+<p><img alt="port-forward cmd" src="/images/part1/task3/port_forward.png"></p>
+<p>No kan du åpne nettlesaren din igjen og sjå på frontend applikasjonen.</p>
+<p><img alt="working" src="/images/part1/task3/working_front.png"></p>
 <p>Du er no ferdig! Hjelp andre dersom andre ikkje er ferdig. Evt. gå og hent deg ein kaffi ;)</p>
     </div><!-- /.entry-content -->
 

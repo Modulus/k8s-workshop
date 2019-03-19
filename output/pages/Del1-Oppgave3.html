@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+        <meta charset="utf-8" />
+        <title>Del 1 Oppgave 3</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">k8s-workshop </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/Del1-Oppgave1.html">Oppgave 1</a></li>
+                    <li><a href="/pages/Del2-Oppgave2.html">Oppgave 2</a></li>
+                    <li class="active"><a href="/pages/Del1-Oppgave3.html">Del 1 Oppgave 3</a></li>
+                    <li><a href="/category/oppgave-liste.html">Oppgave liste</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Del 1 Oppgave 3</h1>
+    
+    <p>Her er oppgave 3. Her skal vi sjå meir på port-forwarding og skalering av kjørandes applikasjonar.</p>
+<h3>Oppgave 3a</h3>
+<p>No skal du deploye ein oppgradert versjon av applikasjonen fra forrige oppgave. Denne versjonen returnerer json-data og har ein frontend som pollar data ca 1 gang per sekund.</p>
+<div class="highlight"><pre><span></span>kubectl apply -f full.yml
+</pre></div>
+
+
+<h3>Oppgave 3b</h3>
+<p>Manifestet fra forrige oppgave deployar kun 1 replica av både frontend og backend tjenesten. Desse skal vi no skalere opp til å kjøre 3 instansar av klar tjeneste.</p>
+<div class="highlight"><pre><span></span>kubectl get deployments
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>kubectl scale deployment/version-backend-deployment --replicas=3
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>kubectl get deployments
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>kubectl get pods -l app=version-backend
+</pre></div>
+
+
+<h3>Oppgave 3c - Åpne frontend tjenesten i nettlesaren din</h3>
+<h3>Oppgave 3d - Port-forward for å få kontakt med backend</h3>
+<p>For å få frontend til å prate med backend i dette tilfellet, må vi sette opp port-forwarding mot backend tjenesten mot port 5000 lokalt. Alternativet er å bruke ein sentral tjeneste eller ein ingress med ein sentral dns. Men desse tinga er utenfor denne workshoppen.</p>
+<p>Du er no ferdig! Hjelp andre dersom andre ikkje er ferdig. Evt. gå og hent deg ein kaffi ;)</p>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -10,23 +10,24 @@
         <header id="banner" class="body">
                 <h1><a href="/">k8s-workshop </a></h1>
                 <nav><ul>
-                    <li><a href="/category/del-1.html">Del 1</a></li>
-                    <li><a href="/category/oppgave-liste.html">Oppgave liste</a></li>
+                    <li><a href="/pages/Del1Oppgaver.html">Del 1 Oppgaver</a></li>
+                    <li><a href="/pages/Del2Oppgaver.html">Del 2 Oppgaver</a></li>
+                    <li><a href="/category/oppgaver.html">Oppgaver</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Del2-Oppgave2.html">Del1-Oppgave 2</a></h1>
+                    <h1 class="entry-title"><a href="/Del2-Oppgave2.html">Oppgave 2</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2019-03-15T13:29:00+01:00">
-                Published: fr. 15 mars 2019
+        <abbr class="published" title="2019-03-18T07:56:00+01:00">
+                Published: ma. 18 mars 2019
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
         </address>
-<p>In <a href="/category/del-1.html">Del 1</a>.</p>
+<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave2.html">del1-oppgave2</a> <a href="/tag/del1.html">del1</a> </p>
 </footer><!-- /.post-info --><h1>Oppgave 2</h1>
 <p>Her er oppgave 2. I denne delen skal de opprette eige namespace på det delte kubernetes clusteret.</p>
@@ -50,7 +51,7 @@
 
 <p>Resultatet av dei forrige kommandoane vil sjå nokonlunde slik ut</p>
 <p><img alt="change namespace" src="/images/part1/task2/change_namespace.png"></p>
-<h2>Oppgave 2b - Deployment</h2>
+<h2>Oppgave 2b - Git clone repo</h2>
 <p>Før vi kan deploye noko, må de klone eit git repository. Repositoriet ligg her [https://github.com/Modulus/k8s-workshop.git]. Velg dei ei fornuftig rot-mappe ala</p>
 <p>/Users/Dittbrukernavn/GitProjects e.l</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/Modulus/k8s-workshop.git
@@ -61,22 +62,36 @@
 <img alt="Files" src="/images/part1/task2/git_repo_output.png"></p>
 <p>Inni denne mappa finnes det enda ei mappe med navnet "k8s" cd til denne mappa. Denne skal ha to filer, slik som under:
 <img alt="Manifests" src="/images/part1/task2/manifests.png"></p>
-<p>Innholdet i fila de skal deploye ser slik ut:</p>
-<p><img alt="Yml" src="/images/part1/task2/yml.png"></p>
+<p>Bytt til k8s mappa og gjer deg klar til å deploye ein applikasjon. </p>
+<h2>Oppgave 2c Deploye backend</h2>
 <div class="highlight"><pre><span></span>cd k8s
 kubectl apply -f backend.yml
 </pre></div>
 
 
-<h2>Oppgave 2c Liste ut objekt</h2>
+<h2>Oppgave 2d Liste ut objekt</h2>
 <p>TODO: FYll inn meir kjøt her veit eg</p>
 <div class="highlight"><pre><span></span>kubectl get deployments
-kubectl get pods
-kubectl get services
 </pre></div>
 
 
-<h3>Oppgave 2d - Fjerne deployment</h3>
+<p><img alt="deployments" src="/images/part1/task2/deployments.png"></p>
+<div class="highlight"><pre><span></span>kubectl get pods
+</pre></div>
+
+
+<p><img alt="Running pods" src="/images/part1/task2/running_pods.png"></p>
+<div class="highlight"><pre><span></span>kubectl get services
+</pre></div>
+
+
+<p><img alt="Serivce" src="/images/part1/task2/service.png"></p>
+<p>Kopier ut "EXTERNAL-IP" verdien. (IP Adressa / DNS Navn). Denne skal brukast på den neste oppgava.  </p>
+<h2>Oppgave 2f</h2>
+<p><strong>NB! Husk å bytte ut 192.168.1.241 med verdien fra "EXTERNAL-IP"</strong></p>
+<p>curl 192.168.1.241</p>
+<p><img alt="curl" src="/images/part1/task2/curl1.png"></p>
+<h3>Oppgave 2f - Fjerne deployment</h3>
 <div class="highlight"><pre><span></span>kubectl delete -f backend.yml
 </pre></div>
 
