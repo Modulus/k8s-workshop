@@ -21,7 +21,7 @@
                     <h1 class="entry-title"><a href="/Del1-Oppgave1.html">Oppgave 1</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2019-03-15T13:29:00+01:00">
-                Published: fr. 15 mars 2019
+                Published: fre 15 mars 2019
         </abbr>
 
         <address class="vcard author">
@@ -31,31 +31,43 @@
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave1.html">del1-oppgave1</a> <a href="/tag/del1.html">del1</a> </p>
 </footer><!-- /.post-info --><p>Her er oppgave 1. Det som skal gjøres her er å installere kubectl verktøyet. Dette verktøyet blir brukt til å knytte seg opp mot ulike kubernetes cluster. Oppgavene skal løysast på eit delt kluster som kjører aws.
 Oppkobling mot klusteret er da ei del av oppgava.</p>
+<p><br/>
+<br/></p>
 <h2>Oppgave 1a -  Installasjon av kubectl</h2>
 <p>Installasjons instrukser for kubectl finnes her: <a href="{https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl}">kubectl install instructions</a></p>
-<h3>Sette opp kubeconfig for workshop cluster</h3>
+<p><br/>
+<br/></p>
+<h3>1. Sette opp kubeconfig for workshop cluster</h3>
 <p>Personen som står der framme og kaklar, vil straks dele ei konfigurasjonsfil med alle. Denne fila må kopierast inn i ~/.kube/ mappen. Kall filen config den fulle stien blir da <strong>~/.kube/config</strong></p>
-<h2>Oppgave 1b Sjekke cluster</h2>
+<p><br/>
+<br/></p>
+<h3>2. Sjekke cluster</h3>
 <div class="highlight"><pre><span></span>kubectl cluster-info
 </pre></div>
 
 
 <p>Outputen skal da se ut som noe slik:
 <img alt="cluster-info" src="/images/part1/task1/cluster-info.png"></p>
-<h2>Oppgave 1c Liste ut nodar</h2>
+<p><br/>
+<br/></p>
+<h3>3. Liste ut nodar</h3>
 <div class="highlight"><pre><span></span>kubectl get nodes
 </pre></div>
 
 
 <p>Output på denne kommandoen ser noenlunde slik ut:</p>
 <p><img alt="nodes" src="/images/part1/task1/nodes.png"></p>
-<h2>Oppgave 1d - Liste ut namespaces</h2>
+<p><br/>
+<br/></p>
+<h3>4. Liste ut namespaces</h3>
 <div class="highlight"><pre><span></span>kubectl get namespaces
 </pre></div>
 
 
 <p><img alt="namespaces" src="/images/part1/task1/namespaces.png"></p>
-<h2>Oppgave 1e - Liste ut pods i kube-system</h2>
+<p><br/>
+<br/></p>
+<h3>5. Liste ut pods i kube-system</h3>
 <div class="highlight"><pre><span></span>kubectl get pods -n kube-system
 </pre></div>
 

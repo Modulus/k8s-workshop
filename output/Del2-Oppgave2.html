@@ -26,7 +26,7 @@
     <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2019-03-18T07:56:00+01:00">
-                Published: ma. 18 mars 2019
+                Published: man 18 mars 2019
         </abbr>
 
         <address class="vcard author">
@@ -34,73 +34,110 @@
         </address>
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave2.html">del1-oppgave2</a> <a href="/tag/del1.html">del1</a> </p>
-</footer><!-- /.post-info -->      <h1>Oppgave 2</h1>
-<p>Her er oppgave 2. I denne delen skal de opprette eige namespace på det delte kubernetes clusteret.</p>
-<h2>Oppave 2a - Opprette namespace</h2>
+</footer><!-- /.post-info -->      <p>Her er oppgave 2. I denne delen skal de opprette eige namespace på det delte kubernetes clusteret.
+<br/>
+<br/>
+<br/>
+<br/></p>
+<h2>Oppave 2a - Opprette og jobbe med namespace</h2>
+<p>Denne oppgava vil gjere dykk kjende med oppretting og bytting av aktivt namespace.</p>
+<p><br/>
+<br/></p>
+<h3>1. Oppretting av namespaces</h3>
 <div class="highlight"><pre><span></span>kubectl create namespace curious-panda
 </pre></div>
 
 
 <p>Denne kommandoen vil opprette et namespace som <strong>du</strong> skal deploye til. Her kan du bruke eit navnet ditt e.l.</p>
 <p><img alt="create namespace" src="/images/part1/task2/namespace_created.png"></p>
-<p>Neste steg er å bytte til ditt nyoppretta namespace</p>
+<p><br/>
+<br/></p>
+<h3>2. Bytte aktivt namespace</h3>
 <div class="highlight"><pre><span></span>kubectl config use-context $(kubectl config current-context) --namespace=curious-panda
 </pre></div>
 
 
 <p><strong>NB!!! Husk å bytte ut "curious-panda" med navnet på namespaces du laga i første delen av denne oppgava!</strong></p>
-<h3>Sjekke aktivt namespace</h3>
+<p><br/>
+<br/></p>
+<h3>3. Sjekke aktivt namespace</h3>
 <div class="highlight"><pre><span></span>kubectl config get-contexts
 </pre></div>
 
 
 <p>Resultatet av dei forrige kommandoane vil sjå nokonlunde slik ut</p>
 <p><img alt="change namespace" src="/images/part1/task2/change_namespace.png"></p>
+<p><br/>
+<br/></p>
 <h2>Oppgave 2b - Git clone repo</h2>
 <p>Før vi kan deploye noko, må de klone eit git repository. Repositoriet ligg her [https://github.com/Modulus/k8s-workshop.git]. Velg dei ei fornuftig rot-mappe ala</p>
 <p>/Users/Dittbrukernavn/GitProjects e.l</p>
+<h3>1. Clone workshop repo til lokal disk</h3>
 <div class="highlight"><pre><span></span>git clone https://github.com/Modulus/k8s-workshop.git
 </pre></div>
 
 
-<p>Innholdet i k8s-workshop folderen skal sjå slik ut:
-<img alt="Files" src="/images/part1/task2/git_repo_output.png"></p>
-<p>Inni denne mappa finnes det enda ei mappe med navnet "k8s" cd til denne mappa. Denne skal ha to filer, slik som under:
-<img alt="Manifests" src="/images/part1/task2/manifests.png"></p>
+<p>Innholdet i k8s-workshop folderen skal sjå slik ut:</p>
+<p><img alt="Files" src="/images/part1/task2/git_repo_output.png"></p>
+<p><br/>
+<br/></p>
+<p>Inni denne mappa finnes det enda ei mappe med navnet "k8s" cd til denne mappa. Denne skal ha to filer, slik som under:</p>
+<p><img alt="Manifests" src="/images/part1/task2/manifests.png"></p>
 <p>Bytt til k8s mappa og gjer deg klar til å deploye ein applikasjon. </p>
+<p><br/>
+<br/></p>
 <h2>Oppgave 2c Deploye backend</h2>
 <div class="highlight"><pre><span></span>cd k8s
 kubectl apply -f backend.yml
 </pre></div>
 
 
+<p><br/>
+<br/></p>
 <h2>Oppgave 2d Liste ut objekt</h2>
-<p>TODO: FYll inn meir kjøt her veit eg</p>
+<p>I denne delen skal dere liste ut det som er blitt deployet av objekter i forrige oppgave.</p>
+<p><br/>
+<br/></p>
+<h2>1. Liste ut deployments</h2>
 <div class="highlight"><pre><span></span>kubectl get deployments
 </pre></div>
 
 
 <p><img alt="deployments" src="/images/part1/task2/deployments.png"></p>
+<p><br/>
+<br/></p>
+<h2>2. Liste ut pods</h2>
 <div class="highlight"><pre><span></span>kubectl get pods
 </pre></div>
 
 
 <p><img alt="Running pods" src="/images/part1/task2/running_pods.png"></p>
+<p><br/>
+<br/></p>
+<h3>3. Liste ut services</h3>
 <div class="highlight"><pre><span></span>kubectl get services
 </pre></div>
 
 
 <p><img alt="Serivce" src="/images/part1/task2/service.png"></p>
 <p>Kopier ut "EXTERNAL-IP" verdien. (IP Adressa / DNS Navn). Denne skal brukast på den neste oppgava.  </p>
+<p><br/>
+<br/></p>
 <h2>Oppgave 2f</h2>
 <p><strong>NB! Husk å bytte ut 192.168.1.241 med verdien fra "EXTERNAL-IP"</strong></p>
 <p>curl 192.168.1.241</p>
 <p><img alt="curl" src="/images/part1/task2/curl1.png"></p>
+<p><br/>
+<br/></p>
 <h3>Oppgave 2f - Fjerne deployment</h3>
 <div class="highlight"><pre><span></span>kubectl delete -f backend.yml
 </pre></div>
 
 
+<p><br/>
+<br/>
+<br/>
+<br/></p>
 <p>Du er no ferdig med oppgave 2, Gå vidare til <a href="/Del1-Oppgave3.html">Oppgave 3</a></p>
     </div><!-- /.entry-content -->
 

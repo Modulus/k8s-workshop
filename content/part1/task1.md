@@ -10,15 +10,23 @@ Category: Oppgaver
 Her er oppgave 1. Det som skal gjøres her er å installere kubectl verktøyet. Dette verktøyet blir brukt til å knytte seg opp mot ulike kubernetes cluster. Oppgavene skal løysast på eit delt kluster som kjører aws.
 Oppkobling mot klusteret er da ei del av oppgava.
 
+<br/>
+<br/>
+
 ## Oppgave 1a -  Installasjon av kubectl
 Installasjons instrukser for kubectl finnes her: [kubectl install instructions]({https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl})
 
-### Sette opp kubeconfig for workshop cluster
+<br/>
+<br/>
+
+### 1. Sette opp kubeconfig for workshop cluster
 
 Personen som står der framme og kaklar, vil straks dele ei konfigurasjonsfil med alle. Denne fila må kopierast inn i ~/.kube/ mappen. Kall filen config den fulle stien blir da **~/.kube/config**
 
+<br/>
+<br/>
 
-## Oppgave 1b Sjekke cluster
+### 2. Sjekke cluster
 
 ```
 kubectl cluster-info
@@ -26,7 +34,10 @@ kubectl cluster-info
 Outputen skal da se ut som noe slik:
 ![cluster-info]({static}/images/part1/task1/cluster-info.png)
 
-## Oppgave 1c Liste ut nodar
+<br/>
+<br/>
+
+### 3. Liste ut nodar
 
 
 ```
@@ -37,8 +48,10 @@ Output på denne kommandoen ser noenlunde slik ut:
 
 ![nodes]({static}/images/part1/task1/nodes.png)
 
+<br/>
+<br/>
 
-## Oppgave 1d - Liste ut namespaces
+### 4. Liste ut namespaces
 
 ```
 kubectl get namespaces
@@ -46,7 +59,10 @@ kubectl get namespaces
 
 ![namespaces]({static}/images/part1/task1/namespaces.png)
 
-## Oppgave 1e - Liste ut pods i kube-system
+<br/>
+<br/>
+
+### 5. Liste ut pods i kube-system
 
 ```
 kubectl get pods -n kube-system

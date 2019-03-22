@@ -9,6 +9,8 @@ Category: Oppgaver
 
 Her er oppgave 3. Her skal vi sjå meir på port-forwarding og skalering av kjørandes applikasjonar.
 
+<br/>
+<br/>
 
 ## Oppgave 3a
 No skal du deploye ein oppgradert versjon av applikasjonen fra forrige oppgave. Denne versjonen returnerer json-data og har ein frontend som pollar data ca 1 gang per sekund.
@@ -16,18 +18,23 @@ No skal du deploye ein oppgradert versjon av applikasjonen fra forrige oppgave. 
 ```
 kubectl apply -f full.yml
 ```
-
+<br/>
+<br/>
 
 ## Oppgave 3b
 Manifestet fra forrige oppgave deployar kun 1 replica av både frontend og backend tjenesten. Desse skal vi no skalere opp til å kjøre 3 instansar av klar tjeneste.
 
-
+### 1. Liste ut deployments
 Først lister vi ut deployment info for det vi nettopp har deploya.
 ```
 kubectl get deployments
 ```
 ![deployments before scaling]({static}/images/part1/task3/deployment.png)
 
+<br/>
+<br/>
+
+### 2. Liste ut pods
 
 Poddar som er deploya finn man slik
 ```
@@ -35,18 +42,29 @@ kubectl get pods
 ```
 ![deployments before scaling]({static}/images/part1/task3/pods1.png)
 
+<br/>
+<br/>
 
+### 3. Skalere opp replicas
 Her skalerer vi backend deploymenten opp til 3 replicas. Det vil sei at vi får 3 poddar når oppskaleringa er ferdig.
 ```
 kubectl scale deployment/version-backend-deployment --replicas=3
 ```
 
+<br/>
+<br/>
+
+### 4. Sjekke oppskalering via deployment objekt
 For å sjå på endring kan vi liste ut deployments slik
 ```
 kubectl get deployments
 ```
 ![deployments before scaling]({static}/images/part1/task3/deployment2.png)
 
+<br/>
+<br/>
+
+### 5. Sjekke oppskalering via pods
 
 Og poddar slik
 ```
@@ -60,6 +78,9 @@ Ein kan også bruka lablar til å lista ut ein spesifikk type pod
 kubectl get pods -l app=version-backend
 ```
 ![deployments before scaling]({static}/images/part1/task3/pods3.png)
+
+<br/>
+<br/>
 
 ## Oppgave 3c - Åpne frontend tjenesten i nettlesaren din
 
@@ -75,15 +96,25 @@ Kopier ut den lange dns strengen under "EXTERNAL-IP" og klask den inn i nettlese
 ![ellol]({static}/images/part1/task3/version_fail.png)
 **Men ka farsken, detta funka jo ikkje. Er da ølagt!!!!?** Eller er da? 
 
+<br/>
+<br/>
 
 ## Oppgave 3d - Port-forward for å få kontakt med backend
 For å få frontend til å prate med backend i dette tilfellet, må vi sette opp port-forwarding mot backend tjenesten mot port 5000 lokalt. Alternativet er å bruke ein sentral tjeneste eller ein ingress med ein sentral dns. Men desse tinga er utenfor denne workshoppen.
 
-Liste ut navnet på backend tjenesten
+<br/>
+<br/>
+
+### 1. Liste ut navnet på backend tjenesten
 ```
 kubectl get services -l app=backend
 ```
 ![backend service]({static}/images/part1/task3/backend_service.png)
+
+<br/>
+<br/>
+
+### 2. Port-forward av tjenesten
 
 Så kan vi kjøre ein port-forward kommando. Hugs at frontend no forventar trafikk på localhost port 5000 og ikke port 80
 ```
@@ -91,8 +122,15 @@ kubectl port-forward service/version-backend-service 5000:80
 ```
 ![port-forward cmd]({static}/images/part1/task3/port_forward.png)
 
+### 3. Åpne frontend i nettleseren din
+
+
 No kan du åpne nettlesaren din igjen og sjå på frontend applikasjonen.
 
 ![working]({static}/images/part1/task3/working_front.png)
+
+
+<br/>
+<br/>
 
 Du er no ferdig! Hjelp andre dersom andre ikkje er ferdig. Evt. gå og hent deg ein kaffi ;)
