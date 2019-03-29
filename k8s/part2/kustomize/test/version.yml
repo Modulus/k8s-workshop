@@ -9,4 +9,5 @@ spec:
   template:
     spec:
       containers:
+        - name: undefined
           image: coderpews/version-app:2.0

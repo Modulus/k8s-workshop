@@ -1,9 +1,0 @@
-namePrefix: version1-
-commonLabels:
-  variant: version1
-commonAnnotations:
-  note: This is version 1 of the version app
-bases:
-  - ../base
-patches:
-  - version.yml

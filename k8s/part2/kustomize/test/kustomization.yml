@@ -1,0 +1,9 @@
+namePrefix: test-
+commonLabels:
+  version: "2.0"
+commonAnnotations:
+  note: This is version 2 of the version app. Running in test environment
+bases:
+  - ../base
+patches:
+  - version.yml

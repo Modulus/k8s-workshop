@@ -1,9 +1,0 @@
-namePrefix: version3-
-commonLabels:
-  variant: version3
-commonAnnotations:
-  note: This is version 3 of the version app
-bases:
-  - ../base
-patches:
-  - version.yml

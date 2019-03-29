@@ -1,0 +1,10 @@
+namePrefix: prod-
+commonLabels:
+  version: "1.0"
+  env: prod
+commonAnnotations:
+  note: This is version 1 of the version app. Running in production
+bases:
+  - ../base
+patches:
+  - version.yml

@@ -82,12 +82,12 @@ Innholdet i k8s-workshop folderen skal sjå slik ut:
 <br/>
 <br/>
 
-Inni denne mappa finnes det enda ei mappe med navnet "k8s" cd til denne mappa. Denne skal ha to filer, slik som under:
+Inni denne mappa finnes det enda ei mappe med navnet "k8s/part1" cd til denne mappa. Denne skal ha to filer, slik som under:
 
 ![Manifests]({static}/images/part1/task2/manifests.png)
 
 
-Bytt til k8s mappa og gjer deg klar til å deploye ein applikasjon. 
+Bytt til k8s/part1 mappa og gjer deg klar til å deploye ein applikasjon. 
 
 <br/>
 <br/>
@@ -95,7 +95,7 @@ Bytt til k8s mappa og gjer deg klar til å deploye ein applikasjon.
 
 ## Oppgave 2c Deploye backend
 ```
-cd k8s
+cd k8s/part1
 kubectl apply -f backend.yml
 ```
 <br/>

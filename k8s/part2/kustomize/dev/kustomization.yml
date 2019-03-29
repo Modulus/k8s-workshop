@@ -1,0 +1,10 @@
+namePrefix: dev-
+commonLabels:
+  version: "3.0"
+  env: dev
+commonAnnotations:
+  note: This is version 3 of the version app. Running in development
+bases:
+  - ../base
+patches:
+  - version.yml
