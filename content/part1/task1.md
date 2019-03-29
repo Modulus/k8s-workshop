@@ -27,7 +27,7 @@ Personen som står der framme og kaklar, vil straks dele ei konfigurasjonsfil me
 <br/>
 
 ### 2. Sjekke cluster
-
+s
 ```
 kubectl cluster-info
 ```

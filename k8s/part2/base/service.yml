@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: version-backend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: version-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000

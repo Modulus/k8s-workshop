@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: version-backend-deployment
+  labels:
+    app: version-backend
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+          image: coderpews/version-app:2.0

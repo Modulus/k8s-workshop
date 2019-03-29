@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: version-backend-deployment
+  labels:
+    app: version-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: version-backend
+  template:
+    metadata:
+      labels:
+        app: version-backend
+    spec:
+      containers:
+        - name: version-backend
+          image: coderpews/version-app:3.0
+          ports:
+            - containerPort: 5000
