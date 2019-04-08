@@ -7,14 +7,17 @@ Summary: Oppgave liste og introduksjon
 Category: Oppgaver
 
 
-Her er oppgave 1. Det som skal gjøres her er å installere kubectl verktøyet. Dette verktøyet blir brukt til å knytte seg opp mot ulike kubernetes cluster. Oppgavene skal løysast på eit delt kluster som kjører aws.
+Her er oppgave 1. Det som skal gjørast her, er å installera kubectl verktøyet. Dette verktøyet blir brukt til å knytta seg opp mot ulike kubernetes clustre. Oppgavene skal løysast på eit delt kluster som kjører aws.
 Oppkobling mot klusteret er da ei del av oppgava.
 
 <br/>
 <br/>
 
-## Oppgave 1a -  Installasjon av kubectl
-Installasjons instrukser for kubectl finnes her: [kubectl install instructions]({https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl})
+## Oppgave 1a -  Installasjon av kubectl og aws-iam-authenticator
+1. [Kubectl installasjon](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl){:target=_blank}
+2. [Aws-iam-authenticator installasjon](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html){:target=_blank}
+3. [Aws-cli installasjon](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html){:target=_blank} 
+
 
 <br/>
 <br/>
@@ -22,12 +25,17 @@ Installasjons instrukser for kubectl finnes her: [kubectl install instructions](
 ### 1. Sette opp kubeconfig for workshop cluster
 
 Personen som står der framme og kaklar, vil straks dele ei konfigurasjonsfil med alle. Denne fila må kopierast inn i ~/.kube/ mappen. Kall filen config den fulle stien blir da **~/.kube/config**
+Det de no skal gjennomføre er da:
+
+1. Legge inn kubeconfig under ~/.kube/config
+2. Legge inn credentials via aws configure --profile profilnavn
+3. Editere kubeconfig under ~/.kube/config med profilnavnet fra steg 2
 
 <br/>
 <br/>
 
 ### 2. Sjekke cluster
-s
+
 ```
 kubectl cluster-info
 ```

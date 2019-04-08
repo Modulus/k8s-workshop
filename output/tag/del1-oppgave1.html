@@ -29,16 +29,26 @@
         </address>
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del1-oppgave1.html">del1-oppgave1</a> <a href="/tag/del1.html">del1</a> </p>
-</footer><!-- /.post-info --><p>Her er oppgave 1. Det som skal gjøres her er å installere kubectl verktøyet. Dette verktøyet blir brukt til å knytte seg opp mot ulike kubernetes cluster. Oppgavene skal løysast på eit delt kluster som kjører aws.
+</footer><!-- /.post-info --><p>Her er oppgave 1. Det som skal gjørast her, er å installera kubectl verktøyet. Dette verktøyet blir brukt til å knytta seg opp mot ulike kubernetes clustre. Oppgavene skal løysast på eit delt kluster som kjører aws.
 Oppkobling mot klusteret er da ei del av oppgava.</p>
 <p><br/>
 <br/></p>
-<h2>Oppgave 1a -  Installasjon av kubectl</h2>
-<p>Installasjons instrukser for kubectl finnes her: <a href="{https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl}">kubectl install instructions</a></p>
+<h2>Oppgave 1a -  Installasjon av kubectl og aws-iam-authenticator</h2>
+<ol>
+<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl" target="_blank">Kubectl installasjon</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html" target="_blank">Aws-iam-authenticator installasjon</a></li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html" target="_blank">Aws-cli installasjon</a> </li>
+</ol>
 <p><br/>
 <br/></p>
 <h3>1. Sette opp kubeconfig for workshop cluster</h3>
-<p>Personen som står der framme og kaklar, vil straks dele ei konfigurasjonsfil med alle. Denne fila må kopierast inn i ~/.kube/ mappen. Kall filen config den fulle stien blir da <strong>~/.kube/config</strong></p>
+<p>Personen som står der framme og kaklar, vil straks dele ei konfigurasjonsfil med alle. Denne fila må kopierast inn i ~/.kube/ mappen. Kall filen config den fulle stien blir da <strong>~/.kube/config</strong>
+Det de no skal gjennomføre er da:</p>
+<ol>
+<li>Legge inn kubeconfig under ~/.kube/config</li>
+<li>Legge inn credentials via aws configure --profile profilnavn</li>
+<li>Editere kubeconfig under ~/.kube/config med profilnavnet fra steg 2</li>
+</ol>
 <p><br/>
 <br/></p>
 <h3>2. Sjekke cluster</h3>
