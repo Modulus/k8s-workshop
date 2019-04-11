@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: version-backend
-          image: rubblesnask/version-app:1.0
+          image: rubblesnask/version-app:2.0
           ports:
             - containerPort: 5000
 ---
