@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: generator-backend
+  namespace: [TODO]
+  labels:
+    app: generator-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: generator-backend
+  template:
+    metadata:
+      labels:
+        app: generator-backend
+    spec:
+      containers:
+        - name: generator-backend
+          image: coderpews/name-generator:1.2
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          readinessProbe:
+            tcpSocket:
+              port: 5000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /json
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 3
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: generator-backend-service
+  namespace: [TODO]
+  labels:
+    app: generator-backend
+spec:
+  type: NodePort
+  selector:
+    app: generator-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      nodePort: 32402
+---
+
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    namespace: [TODO]
+    annotations:
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/scheme: internet-facing
+    name: version-backend-ingress
+  spec:
+    rules:
+      - host: [TODO].aws5.tv2.no
+        http:
+          paths:
+            - path: /
+              backend:
+                serviceName: generator-backend-service
+                servicePort: 80
