@@ -11,7 +11,7 @@
                 <h1><a href="/">k8s-workshop </a></h1>
                 <nav><ul>
                     <li><a href="/pages/Del1Oppgaver.html">Del 1 Oppgaver</a></li>
-                    <li><a href="/pages/Del2Oppgaver.html">Del 2 Oppgaver</a></li>
+                    <li><a href="/pages/del-2-oppgaver.html">Del 2 Oppgaver</a></li>
                     <li class="active"><a href="/category/oppgaver.html">Oppgaver</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -34,7 +34,36 @@
         </address>
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave1.html">del2-oppgave1</a> <a href="/tag/del2.html">del2</a> </p>
-</footer><!-- /.post-info -->      
+</footer><!-- /.post-info -->      <p>Her er oppgave 1. Det som skal gjørast her er å deploye ein pod som kjører nginx. Her skal de også sjå nærare på resource limits.</p>
+<p><br />
+<br /></p>
+<h2>Oppgave 1a - Resource limits</h2>
+<p>Deployement av nginx </p>
+<div class="highlight"><pre><span></span>cd k8s/part2
+kubectl apply -f 1_nginx.yml
+kubectl get po
+</pre></div>
+
+
+<p><img alt="apply" src="/images/part2/task1/2_get_pod.png"></p>
+<p>Hva skjer her?!!! Åpne 1_nginx.yml og se på limits og requests.</p>
+<p><br />
+<br /></p>
+<h2>Oppgave 1b - Redusere limits</h2>
+<p>Forrige steg feilet da det ikke finnes noen noder med den kapasiteten vi spurte om. Vi må nå redusere minne og cpu på limits og requests.</p>
+<p><strong>Før resources slik ut:</strong></p>
+<p><img alt="limit1" src="/images/part2/task1/5_limits_orig.png"></p>
+<p><strong>Etter justering skal det se slik ut:</strong></p>
+<p><img alt="limit1" src="/images/part2/task1/6_limits_adjust.png"></p>
+<p><strong>Deploye ut endringen</strong></p>
+<div class="highlight"><pre><span></span>kubectl apply -f 1_nginx.yml
+</pre></div>
+
+
+<p><img alt="pods_a_limit" src="/images/part2/task1/7_get_po.png"></p>
+<p><br />
+<br /></p>
+<p>Du er nå ferdig med oppgave 1. Hopp videre til Hopp videre til <a href="/Del2-Oppgave2.html">Oppgave 2</a>, men ikke start før alle er klare.</p>
     </div><!-- /.entry-content -->
 
   </article>

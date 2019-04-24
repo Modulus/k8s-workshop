@@ -61,7 +61,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: generator-frontend-deployment
+  name: generator-frontend
   labels:
     app: generator-frontend
 spec:
@@ -76,7 +76,7 @@ spec:
     spec:
       containers:
         - name: generator-frontend
-          image: coderpews/name-generator-front:1.4
+          image: coderpews/name-generator-front:1.5
           ports:
             - containerPort: 80
           resources:
@@ -123,14 +123,15 @@ spec:
     name: version-backend-ingress
   spec:
     rules:
-      - host: version.aws5.tv2.no
+      - host: demo2.aws5.tv2.no
         http:
           paths:
+            - path: /api
+              backend:
+                serviceName: generator-backend-service
+                servicePort: 80
             - path: /
               backend:
                 serviceName: generator-frontend-service
                 servicePort: 80
-            - path: /api/
-              backend:
-                serviceName: generator-backend-service
-                servicePort: 80
+         

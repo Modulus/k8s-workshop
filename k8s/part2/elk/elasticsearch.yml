@@ -387,7 +387,7 @@ spec:
               cpu: "1"
             requests:
               cpu: 25m
-              memory: 1536Mi
+              memory: 512Mi
             
         readinessProbe:
           httpGet:
@@ -563,42 +563,6 @@ spec:
         requests:
           storage: "4Gi"
   
-
----
-# Source: elasticsearch/templates/client-auth.yaml
-
-
-
----
-# Source: elasticsearch/templates/client-ingress.yaml
-
-
----
-# Source: elasticsearch/templates/client-pdb.yaml
-
-
----
-# Source: elasticsearch/templates/data-pdb.yaml
-
-
----
-# Source: elasticsearch/templates/job.yaml
-
-
----
-# Source: elasticsearch/templates/master-pdb.yaml
-
-
----
-# Source: elasticsearch/templates/podsecuritypolicy.yaml
-
-
----
-# Source: elasticsearch/templates/role.yaml
-
-
----
-# Source: elasticsearch/templates/rolebinding.yaml
 
 
 

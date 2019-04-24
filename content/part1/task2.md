@@ -1,7 +1,7 @@
 Title: Oppgave 2
 Date: 2019-03-18 07:56
 Tags: introduction,main,k8s,kubernetes,del1-oppgave2,del1
-Slug: Del2-Oppgave2
+Slug: Del1-Oppgave2
 Authors: John Sigvald Skauge
 Summary: Oppvage 2
 Category: Oppgaver

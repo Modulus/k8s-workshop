@@ -95,13 +95,18 @@ spec:
       - name: kibana
         image: "docker.elastic.co/kibana/kibana-oss:6.7.0"
         imagePullPolicy: IfNotPresent
-        env:
+        # env:
         ports:
         - containerPort: 5601
           name: kibana
           protocol: TCP
         resources:
-          {}
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
           
         volumeMounts:
         - name: kibana
