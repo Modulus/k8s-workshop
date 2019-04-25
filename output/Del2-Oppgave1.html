@@ -37,7 +37,16 @@
 </footer><!-- /.post-info -->      <p>Her er oppgave 1. Det som skal gjørast her er å deploye ein pod som kjører nginx. Her skal de også sjå nærare på resource limits.</p>
 <p><br />
 <br /></p>
-<h2>Oppgave 1a - Resource limits</h2>
+<h2>Oppgave 1a - Namespace</h2>
+<p>Dere skal operere på eget namespace, siden vi deler et cluster.</p>
+<div class="highlight"><pre><span></span>kubectl create ns curious-panda
+kubectl config set-context $(kubectl config current-context) --namespace=curious-panda
+</pre></div>
+
+
+<p><br />
+<br /></p>
+<h2>Oppgave 1b - Resource limits</h2>
 <p>Deployement av nginx </p>
 <div class="highlight"><pre><span></span>cd k8s/part2
 kubectl apply -f 1_nginx.yml
@@ -49,7 +58,7 @@ kubectl get po
 <p>Hva skjer her?!!! Åpne 1_nginx.yml og se på limits og requests.</p>
 <p><br />
 <br /></p>
-<h2>Oppgave 1b - Redusere limits</h2>
+<h2>Oppgave 1c - Redusere limits</h2>
 <p>Forrige steg feilet da det ikke finnes noen noder med den kapasiteten vi spurte om. Vi må nå redusere minne og cpu på limits og requests.</p>
 <p><strong>Før resources slik ut:</strong></p>
 <p><img alt="limit1" src="/images/part2/task1/5_limits_orig.png"></p>
@@ -63,7 +72,12 @@ kubectl get po
 <p><img alt="pods_a_limit" src="/images/part2/task1/7_get_po.png"></p>
 <p><br />
 <br /></p>
-<p>Du er nå ferdig med oppgave 1. Hopp videre til Hopp videre til <a href="/Del2-Oppgave2.html">Oppgave 2</a>, men ikke start før alle er klare.</p>
+<h2>Oppgave 1d - Rydde</h2>
+<div class="highlight"><pre><span></span>kubectl delete -f 1_nginx.yml
+</pre></div>
+
+
+<p>Du er nå ferdig med oppgave 1. Hopp videre til Hopp videre til <a href="/Del2-Oppgave2.html">Oppgave 2</a>, men ikke start før alle er klare og dere har fått forklart hva et StatefulSet er.</p>
     </div><!-- /.entry-content -->
 
   </article>

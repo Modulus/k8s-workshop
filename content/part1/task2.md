@@ -37,7 +37,7 @@ Denne kommandoen vil opprette et namespace som **du** skal deploye til. Her kan 
 ### 2. Bytte aktivt namespace
 
 ```
-kubectl config use-context $(kubectl config current-context) --namespace=curious-panda
+kubectl config set-context $(kubectl config current-context) --namespace=curious-panda
 ```
 
 **NB!!! Husk å bytte ut "curious-panda" med navnet på namespaces du laga i første delen av denne oppgava!**

@@ -60,6 +60,7 @@ metadata:
     heritage: Tiller
   name: kibana
 spec:
+  # type: NodePort
   type: LoadBalancer
   selector:
     app: kibana
@@ -68,6 +69,25 @@ spec:
     - port: 80
       targetPort: 5601
       protocol: TCP
+
+# ---
+#   apiVersion: extensions/v1beta1
+#   kind: Ingress
+#   metadata:
+#     namespace: demo
+#     annotations:
+#       kubernetes.io/ingress.class: alb
+#       alb.ingress.kubernetes.io/scheme: internet-facing
+#     name: kibana-ingress
+#   spec:
+#     rules:
+#       - host: kibana.aws5.tv2.no
+#         http:
+#           paths:
+#             - path: /
+#               backend:
+#                 serviceName: kibana
+#                 servicePort: 80
 ---
 # Source: kibana/templates/deployment.yaml
 apiVersion: apps/v1beta1

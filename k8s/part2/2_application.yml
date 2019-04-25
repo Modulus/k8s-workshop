@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: generator-backend
+  namespace: [TODO]
   labels:
     app: generator-backend
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: generator-backend
-          image: coderpews/name-generator:1.2
+          image: coderpews/name-generator:1.3
           ports:
             - containerPort: 5000
           resources:
@@ -33,7 +34,7 @@ spec:
             periodSeconds: 3
           livenessProbe:
             httpGet:
-              path: /json
+              path: /
               port: 5000
             initialDelaySeconds: 5
             periodSeconds: 3
@@ -44,6 +45,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: generator-backend-service
+  namespace: [TODO]
   labels:
     app: generator-backend
 spec:
@@ -61,6 +63,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: generator-frontend
+  namespace: [TODO]
   labels:
     app: generator-frontend
 spec:
@@ -75,7 +78,7 @@ spec:
     spec:
       containers:
         - name: generator-frontend
-          image: coderpews/name-generator-front:1.5
+          image: coderpews/name-generator-front:1.6
           ports:
             - containerPort: 80
           resources:
@@ -100,6 +103,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
+  namespace: [TODO]
   name: generator-frontend-service
 spec:
   type: NodePort
@@ -115,13 +119,15 @@ spec:
   apiVersion: extensions/v1beta1
   kind: Ingress
   metadata:
+    namespace: [TODO]
     annotations:
-      kubernetes.io/ingress.class: alb
-      alb.ingress.kubernetes.io/scheme: internet-facing
-    name: version-backend-ingress
+      nginx.ingress.kubernetes.io/rewrite-target: /
+      kubernetes.io/ingress.class: nginx
+      external-dns.alpha.kubernetes.io/target: [TODO_DNS_ELB]
+    name: version-ingress
   spec:
     rules:
-      - host: demo2.aws5.tv2.no
+      - host: [TODO].aws5.tv2.no
         http:
           paths:
             - path: /api

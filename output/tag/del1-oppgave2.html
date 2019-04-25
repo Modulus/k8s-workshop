@@ -48,7 +48,7 @@
 <p><br/>
 <br/></p>
 <h3>2. Bytte aktivt namespace</h3>
-<div class="highlight"><pre><span></span>kubectl config use-context $(kubectl config current-context) --namespace=curious-panda
+<div class="highlight"><pre><span></span>kubectl config set-context $(kubectl config current-context) --namespace=curious-panda
 </pre></div>
 
 
