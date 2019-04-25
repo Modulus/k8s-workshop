@@ -16,10 +16,10 @@ spec:
         image: nginx:1.15-alpine
         resources:
           limits:
-            cpu: "500m"
-            memory: "512M"
+            cpu: "16000m"
+            memory: "64Gi"
           requests:
-            cpu: "250m"
-            memory: "256M"
+            cpu: "8000m"
+            memory: "32Gi"
         ports:
         - containerPort: 80

@@ -30,16 +30,68 @@
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave2.html">del2-oppgave2</a> <a href="/tag/del2.html">del2</a> </p>
 </footer><!-- /.post-info --><p>De skal deploya ein enkel applikasjon. De vil da også få ein ingress med ein public dns de kan gå mot for å bruke deires egen instans av tenesta.</p>
-<p>Før de startar skal gnålemåsen der framme deploya ein del graps. Stopp her og vent før de fortsett.</p>
-<h2>Oppave 2a</h2>
+<p>Før de startar skal han der framme visa detaljar rundt ingress og ingress controller.</p>
+<p><br />
+<br /></p>
+<h2>Oppave 2a klargjøring av filer</h2>
 <ol>
 <li>Når alt er klart til å fortsette, skal de åpne fila "2_application.yml" i ein editor. </li>
 <li>Bytt ut alle [TODO] med namespacet de har oppretta i forrige oppgave</li>
+<li>Bytt ut [TODO_DNS] med public dns for elb knyttet til nginx-ingressen (Han der framme veit kva der er snakk om)</li>
 </ol>
-<h2>Oppgave 2b</h2>
+<p><strong>For å sjekke namespace</strong></p>
+<div class="highlight"><pre><span></span>kubectl config get-contexts
+</pre></div>
+
+
+<h2>Oppgave 2b deploya applikasjon</h2>
 <p>Deploya applikasjonen ut til ditt eige namespace</p>
 <div class="highlight"><pre><span></span>kubectl apply -f 2_application.yml
-</pre></div>                </article>
+</pre></div>
+
+
+<p><img alt="apply" src="/images/part2/task2/1_apply.png"></p>
+<p>NB! Det vil ta litt tid før dns blir oppdatert</p>
+<p><br />
+<br /></p>
+<h2>Oppgave 2c Liste ut poddar</h2>
+<div class="highlight"><pre><span></span>kubectl get po
+</pre></div>
+
+
+<p><img alt="pod" src="/images/part2/task2/2_get_po.png"></p>
+<p><br />
+<br /></p>
+<h2>Oppgave 2d - Liste ut services</h2>
+<div class="highlight"><pre><span></span>kubectl get svc
+</pre></div>
+
+
+<p><img alt="svc" src="/images/part2/task2/3_get_svc.png"></p>
+<p><br />
+<br /></p>
+<h2>Oppgave 2e - Liste ut ingress og akssesera tjenesta fra nettlesaren din</h2>
+<div class="highlight"><pre><span></span>kubectl get ingresses
+</pre></div>
+
+
+<p><img alt="ing" src="/images/part2/task2/4_get_ingress.png"></p>
+<p><strong>Kopier ut verdien under feltet 'HOST'</strong></p>
+<p><br />
+<br /></p>
+<ol>
+<li>Lim inn 'HOST' verdien inn i nettlesaren din på pc/mobil. </li>
+</ol>
+<p><img alt="landed" src="/images/part2/task2/7_landed.png"></p>
+<p><br />
+<br /></p>
+<ol>
+<li>Lek deg litt med applikasjonen</li>
+</ol>
+<p><img alt="gen" src="/images/part2/task2/8_generated.png"></p>
+<p><br />
+<br /></p>
+<p><strong>Du er no ferdig og kan fortsette med <a href="/Del2-Oppgave3.html">Oppgave 3</a></strong></p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">

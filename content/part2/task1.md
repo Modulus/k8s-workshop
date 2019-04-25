@@ -15,8 +15,8 @@ Her er oppgave 1. Det som skal gjørast her er å deploye ein pod som kjører ng
 Dere skal operere på eget namespace, siden vi deler et cluster.
 
 ```
-kubectl create ns curious-panda
-kubectl config set-context $(kubectl config current-context) --namespace=curious-panda
+kubectl create ns efficacious-coqui
+kubectl config set-context $(kubectl config current-context) --namespace=efficacious-coqui
 ```
 
 <br />

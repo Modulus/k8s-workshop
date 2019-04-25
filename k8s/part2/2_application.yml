@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: generator-backend
-  namespace: [TODO]
+  namespace: efficacious-coqui
   labels:
     app: generator-backend
 spec:
@@ -45,7 +45,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: generator-backend-service
-  namespace: [TODO]
+  namespace: efficacious-coqui
   labels:
     app: generator-backend
 spec:
@@ -63,7 +63,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: generator-frontend
-  namespace: [TODO]
+  namespace: efficacious-coqui
   labels:
     app: generator-frontend
 spec:
@@ -103,7 +103,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: [TODO]
+  namespace: efficacious-coqui
   name: generator-frontend-service
 spec:
   type: NodePort
@@ -119,15 +119,16 @@ spec:
   apiVersion: extensions/v1beta1
   kind: Ingress
   metadata:
-    namespace: [TODO]
+    namespace: efficacious-coqui
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: /
       kubernetes.io/ingress.class: nginx
-      external-dns.alpha.kubernetes.io/target: [TODO_DNS_ELB]
+      external-dns.alpha.kubernetes.io/ttl: "60"
+      external-dns.alpha.kubernetes.io/target: a5ce1160d675611e98a4006162cbe64e-360079582.eu-west-1.elb.amazonaws.com #[TODO_DNS_ELB]
     name: version-ingress
   spec:
     rules:
-      - host: [TODO].aws5.tv2.no
+      - host: efficacious-coqui.aws5.tv2.no
         http:
           paths:
             - path: /api
