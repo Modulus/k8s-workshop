@@ -20,8 +20,8 @@
                 <article>
                     <h1 class="entry-title"><a href="/Del2-Oppgave3.html">Oppgave 3</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2019-04-27T13:13:00+02:00">
-                Published: lør 27 april 2019
+        <abbr class="published" title="2019-03-29T10:01:00+01:00">
+                Published: fre 29 mars 2019
         </abbr>
 
         <address class="vcard author">
@@ -42,7 +42,40 @@
 </ol>
 <p><br /></p>
 <div class="highlight"><pre><span></span>kubectl apply -f 3_kibana.yml
-</pre></div>                </article>
+</pre></div>
+
+
+<p><img alt="apply" src="/images/part2/task3/1_apply.png"></p>
+<h3>Oppgave 3b - Lage index pattern for filebeat i kibana</h3>
+<p>Det kan ta ein del tid før dns innslag blir aktive. Dersom dette tar for lang tid kan dette legges inn i /etc/hosts fila di</p>
+<p>åpne kibana-namespacenavn.aws5.tv2.no i nettelseren din. Dersom dette går dårlig kan du enten venta eller endra /etc/hosts som nevnt over.</p>
+<ol>
+<li>Åpne "Management" under hoved menyen</li>
+</ol>
+<p><img alt="managment" src="/images/part2/task3/2_index_pattern_link.png">
+<br />
+<br /></p>
+<ol>
+<li>Trykk på "Index Patterns".</li>
+<li>Skriv "filebeat*"</li>
+<li>Trykk "Next Step"</li>
+</ol>
+<p><img alt="index_pat" src="/images/part2/task3/2_index_pattern.png">
+<br />
+<br /></p>
+<ol>
+<li>Velg "@timestamp" fra dropdown</li>
+<li>Trykk "Create index pattern"</li>
+</ol>
+<p><img alt="index_pat" src="/images/part2/task3/3_index_pattern.png"></p>
+<p><br />
+<br /></p>
+<h3>Oppgave 3c - Leke med applikasjonen fra oppgave 2 og se i kibana</h3>
+<p>Applikasjonen fra oppgave 2 logger ganske mykje, kanskje litt for mykje. Men dette er bra for dette eksempelet. Tryk "Generate" Eit par gangar i appen og sjå på "Discovery" i kibana.</p>
+<p><img alt="kibana" src="/images/part2/task3/4_discovery.png"></p>
+<p><br />
+<br /></p>
+<p>Da er vi ferdige, ikkje meire å gjøra no. </p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">

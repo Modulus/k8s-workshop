@@ -5,7 +5,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: workshop.aws5.tv2.no
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 80
       name: http
@@ -26,28 +26,27 @@ spec:
         app: workshop
     spec:
       containers:
-        - image: coderpews/k8s-workshop:1.1
+        - image: coderpews/k8s-workshop:1.2
           name: workshop
           ports:
             - containerPort: 80
               name: http
 
-# ---
+---
 
-#   apiVersion: extensions/v1beta1
-#   kind: Ingress
-#   metadata:
-#     annotations:
-#       kubernetes.io/ingress.class: alb
-#       alb.ingress.kubernetes.io/scheme: internet-facing
-#     name: version-backend-ingress
-#   spec:
-#     rules:
-#       - host: guide.aws5.tv2.no
-#         http:
-#           paths:
-#             - path: /
-#               backend:
-#                 serviceName: workshop
-#                 servicePort: 80
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    name: version-backend-ingress
+  spec:
+    rules:
+      - host: wrk.aws5.tv2.no
+        http:
+          paths:
+            - path: /
+              backend:
+                serviceName: workshop
+                servicePort: 80
        

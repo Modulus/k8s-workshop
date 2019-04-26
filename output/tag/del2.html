@@ -18,7 +18,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Del2-Oppgave3.html">Oppgave 3</a></h1>
+                    <h1 class="entry-title"><a href="/Del2-Oppgave1.html">Oppgave 1</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2019-04-27T13:13:00+02:00">
                 Published: lør 27 april 2019
@@ -28,21 +28,51 @@
                 By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
         </address>
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
-<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave3.html">del2-oppgave3</a> <a href="/tag/del2.html">del2</a> </p>
-</footer><!-- /.post-info --><p>Dere skal nå deploye kibana i deres eget namespace. Dere vil da også få en ingress med en public dns dere kan gå mot for å bruke deres egen kibana instans.</p>
-<p>Før de startar skal gnålemåsen der framme deploya ein del graps. Stopp her og vent før de fortsett.</p>
+<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave1.html">del2-oppgave1</a> <a href="/tag/del2.html">del2</a> </p>
+</footer><!-- /.post-info --><p>Her er oppgave 1. Det som skal gjørast her er å deploye ein pod som kjører nginx. Her skal de også sjå nærare på resource limits.</p>
 <p><br />
 <br /></p>
-<h2>Oppgave 3a</h2>
-<ol>
-<li>cd til k8s/part2</li>
-<li>Åpne 3_kibana.yml</li>
-<li>Bytt ut [TODO] med navnet fra namespacet ditt</li>
-<li>Bytt ut [TODO_DNS] med public dns fra public dns navnet til ingressen</li>
-</ol>
-<p><br /></p>
-<div class="highlight"><pre><span></span>kubectl apply -f 3_kibana.yml
-</pre></div>                </article>
+<h2>Oppgave 1a - Namespace</h2>
+<p>Dere skal operere på eget namespace, siden vi deler et cluster.</p>
+<div class="highlight"><pre><span></span>kubectl create ns efficacious-coqui
+kubectl config set-context $(kubectl config current-context) --namespace=efficacious-coqui
+</pre></div>
+
+
+<p><br />
+<br /></p>
+<h2>Oppgave 1b - Resource limits</h2>
+<p>Deployement av nginx </p>
+<div class="highlight"><pre><span></span>cd k8s/part2
+kubectl apply -f 1_nginx.yml
+kubectl get po
+</pre></div>
+
+
+<p><img alt="apply" src="/images/part2/task1/2_get_pod.png"></p>
+<p>Hva skjer her?!!! Åpne 1_nginx.yml og se på limits og requests.</p>
+<p><br />
+<br /></p>
+<h2>Oppgave 1c - Redusere limits</h2>
+<p>Forrige steg feilet da det ikke finnes noen noder med den kapasiteten vi spurte om. Vi må nå redusere minne og cpu på limits og requests.</p>
+<p><strong>Før resources slik ut:</strong></p>
+<p><img alt="limit1" src="/images/part2/task1/5_limits_orig.png"></p>
+<p><strong>Etter justering skal det se slik ut:</strong></p>
+<p><img alt="limit1" src="/images/part2/task1/6_limits_adjust.png"></p>
+<p><strong>Deploye ut endringen</strong></p>
+<div class="highlight"><pre><span></span>kubectl apply -f 1_nginx.yml
+</pre></div>
+
+
+<p><img alt="pods_a_limit" src="/images/part2/task1/7_get_po.png"></p>
+<p><br />
+<br /></p>
+<h2>Oppgave 1d - Rydde</h2>
+<div class="highlight"><pre><span></span>kubectl delete -f 1_nginx.yml
+</pre></div>
+
+
+<p>Du er nå ferdig med oppgave 1. Hopp videre til Hopp videre til <a href="/Del2-Oppgave2.html">Oppgave 2</a>, men ikke start før alle er klare og dere har fått forklart hva et StatefulSet er.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -73,8 +103,8 @@
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/Del2-Oppgave1.html" rel="bookmark"
-                           title="Permalink to Oppgave 1">Oppgave 1</a></h1>
+                    <h1><a href="/Del2-Oppgave3.html" rel="bookmark"
+                           title="Permalink to Oppgave 3">Oppgave 3</a></h1>
                 </header>
 
                 <div class="entry-content">
@@ -87,9 +117,9 @@
                 By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
         </address>
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
-<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave1.html">del2-oppgave1</a> <a href="/tag/del2.html">del2</a> </p>
-</footer><!-- /.post-info -->                <p>Limits og Requests</p>
-                <a class="readmore" href="/Del2-Oppgave1.html">read more</a>
+<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave3.html">del2-oppgave3</a> <a href="/tag/del2.html">del2</a> </p>
+</footer><!-- /.post-info -->                <p>Oppgave liste og introduksjon</p>
+                <a class="readmore" href="/Del2-Oppgave3.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

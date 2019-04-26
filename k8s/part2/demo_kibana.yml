@@ -13,7 +13,7 @@ data:
   kibana.yml: |
     elasticsearch.url: http://elasticsearch-client.logging.svc.cluster.local:9200
     server.host: "0"
-    server.name: [TODO]-kibana.aws5.tv2.no
+    server.name: snadder-kibana.aws5.tv2.no
     
 ---
 # Source: kibana/templates/tests/test-configmap.yaml
@@ -80,7 +80,7 @@ spec:
     name: kibana-ingress
   spec:
     rules:
-      - host: [TODO]-kibana.aws5.tv2.no
+      - host: snadder-kibana.aws5.tv2.no
         http:
           paths:
             - path: /

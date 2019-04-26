@@ -11,9 +11,9 @@ metadata:
     heritage: Tiller
 data:
   kibana.yml: |
-    elasticsearch.url: http://elasticsearch-client:9200
+    elasticsearch.url: http://elasticsearch-client.logging.svc.cluster.local:9200
     server.host: "0"
-    server.name: kibana
+    server.name: kibana.aws5.tv2.no
     
 ---
 # Source: kibana/templates/tests/test-configmap.yaml
@@ -70,24 +70,23 @@ spec:
       targetPort: 5601
       protocol: TCP
 
-# ---
-#   apiVersion: extensions/v1beta1
-#   kind: Ingress
-#   metadata:
-#     namespace: demo
-#     annotations:
-#       kubernetes.io/ingress.class: alb
-#       alb.ingress.kubernetes.io/scheme: internet-facing
-#     name: kibana-ingress
-#   spec:
-#     rules:
-#       - host: kibana.aws5.tv2.no
-#         http:
-#           paths:
-#             - path: /
-#               backend:
-#                 serviceName: kibana
-#                 servicePort: 80
+---
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    namespace: demo
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    name: kibana-ingress
+  spec:
+    rules:
+      - host: kibana.aws5.tv2.no
+        http:
+          paths:
+            - path: /
+              backend:
+                serviceName: kibana
+                servicePort: 80
 ---
 # Source: kibana/templates/deployment.yaml
 apiVersion: apps/v1beta1
@@ -140,15 +139,4 @@ spec:
           configMap:
             name: kibana
 
----
-# Source: kibana/templates/configmap-dashboardimport.yaml
-
----
-# Source: kibana/templates/ingress.yaml
-
----
-# Source: kibana/templates/serviceaccount.yaml
-
----
-# Source: kibana/templates/volume-claim.yaml
 
