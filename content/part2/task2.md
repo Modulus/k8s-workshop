@@ -17,7 +17,6 @@ Før de startar skal han der framme visa detaljar rundt ingress og ingress contr
 
 1. Når alt er klart til å fortsette, skal de åpne fila "2_application.yml" i ein editor. 
 2.  Bytt ut alle [TODO] med namespacet de har oppretta i forrige oppgave
-3. Bytt ut [TODO_DNS] med public dns for elb knyttet til nginx-ingressen (Han der framme veit kva der er snakk om)
 
 **For å sjekke namespace**
 

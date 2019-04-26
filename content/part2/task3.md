@@ -19,7 +19,6 @@ Før de startar skal gnålemåsen der framme deploya ein del graps. Stopp her og
 1. cd til k8s/part2
 2. Åpne 3_kibana.yml
 3. Bytt ut [TODO] med navnet fra namespacet ditt
-4. Bytt ut [TODO_DNS] med public dns fra public dns navnet til ingressen
 
 <br />
 
