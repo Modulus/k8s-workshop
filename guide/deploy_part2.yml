@@ -26,7 +26,7 @@ spec:
         app: workshop
     spec:
       containers:
-        - image: coderpews/k8s-workshop:1.4
+        - image: coderpews/k8s-workshop:1.5
           name: workshop
           ports:
             - containerPort: 80

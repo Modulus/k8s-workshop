@@ -5,11 +5,11 @@ from __future__ import unicode_literals
 AUTHOR = 'John Sigvald Skauge'
 SITENAME = 'k8s-workshop'
 SITEURL = ''
-
 PATH = 'content'
 
 TIMEZONE = 'Europe/Oslo'
 
+DISPLAY_CATEGORIES_ON_MENU = False
 DEFAULT_LANG = 'no'
 
 # Feed generation is usually not desired when developing

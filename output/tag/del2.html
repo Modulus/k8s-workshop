@@ -12,82 +12,12 @@
                 <nav><ul>
                     <li><a href="/pages/Del1Oppgaver.html">Del 1 Oppgaver</a></li>
                     <li><a href="/pages/del-2-oppgaver.html">Del 2 Oppgaver</a></li>
-                    <li><a href="/category/oppgaver.html">Oppgaver</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Del2-Oppgave3.html">Oppgave 3</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2019-04-27T13:13:00+02:00">
-                Published: lør 27 april 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
-        </address>
-<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
-<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave3.html">del2-oppgave3</a> <a href="/tag/del2.html">del2</a> </p>
-</footer><!-- /.post-info --><p>Dere skal nå deploye kibana i deres eget namespace. Dere vil da også få en ingress med en public dns dere kan gå mot for å bruke deres egen kibana instans.</p>
-<p>Før de startar skal gnålemåsen der framme deploya ein del graps. Stopp her og vent før de fortsett.</p>
-<p><br />
-<br /></p>
-<h2>Oppgave 3a</h2>
-<ol>
-<li>cd til k8s/part2</li>
-<li>Åpne 3_kibana.yml</li>
-<li>Bytt ut [TODO] med navnet fra namespacet ditt</li>
-</ol>
-<p><br /></p>
-<div class="highlight"><pre><span></span>kubectl apply -f 3_kibana.yml
-</pre></div>
-
-
-<p><img alt="apply" src="/images/part2/task3/1_apply.png"></p>
-<h3>Oppgave 3b - Lage index pattern for filebeat i kibana</h3>
-<p>Det kan ta ein del tid før dns innslag blir aktive. Dersom dette tar for lang tid kan dette legges inn i /etc/hosts fila di</p>
-<p>åpne kibana-namespacenavn.aws5.tv2.no i nettelseren din. Dersom dette går dårlig kan du enten venta eller endra /etc/hosts som nevnt over.</p>
-<ol>
-<li>Åpne "Management" under hoved menyen</li>
-</ol>
-<p><img alt="managment" src="/images/part2/task3/2_index_pattern_link.png">
-<br />
-<br /></p>
-<ol>
-<li>Trykk på "Index Patterns".</li>
-<li>Skriv "filebeat*"</li>
-<li>Trykk "Next Step"</li>
-</ol>
-<p><img alt="index_pat" src="/images/part2/task3/2_index_pattern.png">
-<br />
-<br /></p>
-<ol>
-<li>Velg "@timestamp" fra dropdown</li>
-<li>Trykk "Create index pattern"</li>
-</ol>
-<p><img alt="index_pat" src="/images/part2/task3/3_index_pattern.png"></p>
-<p><br />
-<br /></p>
-<h3>Oppgave 3c - Leke med applikasjonen fra oppgave 2 og se i kibana</h3>
-<p>Applikasjonen fra oppgave 2 logger ganske mykje, kanskje litt for mykje. Men dette er bra for dette eksempelet. Tryk "Generate" Eit par gangar i appen og sjå på "Discovery" i kibana.</p>
-<p><img alt="kibana" src="/images/part2/task3/4_discovery.png"></p>
-<p><br />
-<br /></p>
-<p>Da er vi ferdige, ikkje meire å gjøra no. </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Del2-Oppgave2.html" rel="bookmark"
-                           title="Permalink to Oppgave 2">Oppgave 2</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="/Del2-Oppgave2.html">Oppgave 2</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2019-04-23T10:23:00+02:00">
                 Published: tir 23 april 2019
@@ -98,34 +28,69 @@
         </address>
 <p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
 <p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave2.html">del2-oppgave2</a> <a href="/tag/del2.html">del2</a> </p>
-</footer><!-- /.post-info -->                <p>Oppgave liste og introduksjon</p>
-                <a class="readmore" href="/Del2-Oppgave2.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+</footer><!-- /.post-info --><p>De skal deploya ein enkel applikasjon. De vil da også få ein ingress med ein public dns de kan gå mot for å bruke deires egen instans av tenesta.</p>
+<p>Før de startar skal han der framme visa detaljar rundt ingress og ingress controller.</p>
+<p><br />
+<br /></p>
+<h2>Oppave 2a klargjøring av filer</h2>
+<ol>
+<li>Når alt er klart til å fortsette, skal de åpne fila "2_application.yml" i ein editor. </li>
+<li>Bytt ut alle [TODO] med namespacet de har oppretta i forrige oppgave</li>
+</ol>
+<p><strong>For å sjekke namespace</strong></p>
+<div class="highlight"><pre><span></span>kubectl config get-contexts
+</pre></div>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Del2-Oppgave1.html" rel="bookmark"
-                           title="Permalink to Oppgave 1">Oppgave 1</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-03-29T10:01:00+01:00">
-                Published: fre 29 mars 2019
-        </abbr>
+<h2>Oppgave 2b deploya applikasjon</h2>
+<p>Deploya applikasjonen ut til ditt eige namespace</p>
+<div class="highlight"><pre><span></span>kubectl apply -f 2_application.yml
+</pre></div>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
-        </address>
-<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
-<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave1.html">del2-oppgave1</a> <a href="/tag/del2.html">del2</a> </p>
-</footer><!-- /.post-info -->                <p>Limits og Requests</p>
-                <a class="readmore" href="/Del2-Oppgave1.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+
+<p><img alt="apply" src="/images/part2/task2/1_apply.png"></p>
+<p>NB! Det vil ta litt tid før dns blir oppdatert</p>
+<p><br />
+<br /></p>
+<h2>Oppgave 2c Liste ut poddar</h2>
+<div class="highlight"><pre><span></span>kubectl get po
+</pre></div>
+
+
+<p><img alt="pod" src="/images/part2/task2/2_get_po.png"></p>
+<p><br />
+<br /></p>
+<h2>Oppgave 2d - Liste ut services</h2>
+<div class="highlight"><pre><span></span>kubectl get svc
+</pre></div>
+
+
+<p><img alt="svc" src="/images/part2/task2/3_get_svc.png"></p>
+<p><br />
+<br /></p>
+<h2>Oppgave 2e - Liste ut ingress og akssesera tjenesta fra nettlesaren din</h2>
+<div class="highlight"><pre><span></span>kubectl get ingresses
+</pre></div>
+
+
+<p><img alt="ing" src="/images/part2/task2/4_get_ingress.png"></p>
+<p><strong>Kopier ut verdien under feltet 'HOST'</strong></p>
+<p><br />
+<br /></p>
+<ol>
+<li>Lim inn 'HOST' verdien inn i nettlesaren din på pc/mobil. </li>
+</ol>
+<p><img alt="landed" src="/images/part2/task2/7_landed.png"></p>
+<p><br />
+<br /></p>
+<ol>
+<li>Lek deg litt med applikasjonen</li>
+</ol>
+<p><img alt="gen" src="/images/part2/task2/8_generated.png"></p>
+<p><br />
+<br /></p>
+<p><strong>Du er no ferdig og kan fortsette med <a href="/oppgave-3.html">Oppgave 3</a></strong></p>                </article>
+            </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

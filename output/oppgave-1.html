@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
         <meta charset="utf-8" />
-        <title>Oppgave 2</title>
+        <title>Oppgave 1</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 </head>
 
@@ -18,83 +18,70 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/Del2-Oppgave2.html" rel="bookmark"
-           title="Permalink to Oppgave 2">Oppgave 2</a></h1>
+        <a href="/oppgave-1.html" rel="bookmark"
+           title="Permalink to Oppgave 1">Oppgave 1</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2019-04-23T10:23:00+02:00">
-                Published: tir 23 april 2019
+        <abbr class="published" title="2019-04-27T13:13:00+02:00">
+                Published: lør 27 april 2019
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/john-sigvald-skauge.html">John Sigvald Skauge</a>
         </address>
-<p>In <a href="/category/oppgaver.html">Oppgaver</a>.</p>
-<p>tags: <a href="/tag/introduction.html">introduction</a> <a href="/tag/main.html">main</a> <a href="/tag/k8s.html">k8s</a> <a href="/tag/kubernetes.html">kubernetes</a> <a href="/tag/del2-oppgave2.html">del2-oppgave2</a> <a href="/tag/del2.html">del2</a> </p>
-</footer><!-- /.post-info -->      <p>De skal deploya ein enkel applikasjon. De vil da også få ein ingress med ein public dns de kan gå mot for å bruke deires egen instans av tenesta.</p>
-<p>Før de startar skal han der framme visa detaljar rundt ingress og ingress controller.</p>
+<p>In <a href="/category/part2.html">part2</a>.</p>
+
+</footer><!-- /.post-info -->      <p>Tags: introduction,main,k8s,kubernetes,del2-oppgave1,del2
+Slug: Del2-Oppgave1
+Authors: John Sigvald Skauge
+Summary: Limits og Requests
+Category: Oppgaver</p>
+<p>Her er oppgave 1. Det som skal gjørast her er å deploye ein pod som kjører nginx. Her skal de også sjå nærare på resource limits.</p>
 <p><br />
 <br /></p>
-<h2>Oppave 2a klargjøring av filer</h2>
-<ol>
-<li>Når alt er klart til å fortsette, skal de åpne fila "2_application.yml" i ein editor. </li>
-<li>Bytt ut alle [TODO] med namespacet de har oppretta i forrige oppgave</li>
-</ol>
-<p><strong>For å sjekke namespace</strong></p>
-<div class="highlight"><pre><span></span>kubectl config get-contexts
+<h2>Oppgave 1a - Namespace</h2>
+<p>Dere skal operere på eget namespace, siden vi deler et cluster.</p>
+<div class="highlight"><pre><span></span>kubectl create ns efficacious-coqui
+kubectl config set-context $(kubectl config current-context) --namespace=efficacious-coqui
 </pre></div>
 
 
-<h2>Oppgave 2b deploya applikasjon</h2>
-<p>Deploya applikasjonen ut til ditt eige namespace</p>
-<div class="highlight"><pre><span></span>kubectl apply -f 2_application.yml
+<p><br />
+<br /></p>
+<h2>Oppgave 1b - Resource limits</h2>
+<p>Deployement av nginx </p>
+<div class="highlight"><pre><span></span>cd k8s/part2
+kubectl apply -f 1_nginx.yml
+kubectl get po
 </pre></div>
 
 
-<p><img alt="apply" src="/images/part2/task2/1_apply.png"></p>
-<p>NB! Det vil ta litt tid før dns blir oppdatert</p>
+<p><img alt="apply" src="/images/part2/task1/2_get_pod.png"></p>
+<p>Hva skjer her?!!! Åpne 1_nginx.yml og se på limits og requests.</p>
 <p><br />
 <br /></p>
-<h2>Oppgave 2c Liste ut poddar</h2>
-<div class="highlight"><pre><span></span>kubectl get po
+<h2>Oppgave 1c - Redusere limits</h2>
+<p>Forrige steg feilet da det ikke finnes noen noder med den kapasiteten vi spurte om. Vi må nå redusere minne og cpu på limits og requests.</p>
+<p><strong>Før resources slik ut:</strong></p>
+<p><img alt="limit1" src="/images/part2/task1/5_limits_orig.png"></p>
+<p><strong>Etter justering skal det se slik ut:</strong></p>
+<p><img alt="limit1" src="/images/part2/task1/6_limits_adjust.png"></p>
+<p><strong>Deploye ut endringen</strong></p>
+<div class="highlight"><pre><span></span>kubectl apply -f 1_nginx.yml
 </pre></div>
 
 
-<p><img alt="pod" src="/images/part2/task2/2_get_po.png"></p>
+<p><img alt="pods_a_limit" src="/images/part2/task1/7_get_po.png"></p>
 <p><br />
 <br /></p>
-<h2>Oppgave 2d - Liste ut services</h2>
-<div class="highlight"><pre><span></span>kubectl get svc
+<h2>Oppgave 1d - Rydde</h2>
+<div class="highlight"><pre><span></span>kubectl delete -f 1_nginx.yml
 </pre></div>
 
 
-<p><img alt="svc" src="/images/part2/task2/3_get_svc.png"></p>
-<p><br />
-<br /></p>
-<h2>Oppgave 2e - Liste ut ingress og akssesera tjenesta fra nettlesaren din</h2>
-<div class="highlight"><pre><span></span>kubectl get ingresses
-</pre></div>
-
-
-<p><img alt="ing" src="/images/part2/task2/4_get_ingress.png"></p>
-<p><strong>Kopier ut verdien under feltet 'HOST'</strong></p>
-<p><br />
-<br /></p>
-<ol>
-<li>Lim inn 'HOST' verdien inn i nettlesaren din på pc/mobil. </li>
-</ol>
-<p><img alt="landed" src="/images/part2/task2/7_landed.png"></p>
-<p><br />
-<br /></p>
-<ol>
-<li>Lek deg litt med applikasjonen</li>
-</ol>
-<p><img alt="gen" src="/images/part2/task2/8_generated.png"></p>
-<p><br />
-<br /></p>
-<p><strong>Du er no ferdig og kan fortsette med <a href="/oppgave-3.html">Oppgave 3</a></strong></p>
+<p>Du er nå ferdig med oppgave 1. Hopp videre til Hopp videre til <a href="/Del2-Oppgave2.html">Oppgave 2</a>, men ikke start før alle er klare og dere har fått forklart hva et StatefulSet er.</p>
     </div><!-- /.entry-content -->
 
   </article>
